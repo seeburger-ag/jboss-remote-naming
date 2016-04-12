@@ -14,6 +14,7 @@ import org.jboss.remoting3.Endpoint;
 import org.jboss.remoting3.Remoting;
 import org.jboss.remoting3.remote.RemoteConnectionProviderFactory;
 import org.jboss.remoting3.spi.NetworkServerProvider;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.xnio.OptionMap;
 import org.xnio.Xnio;
@@ -28,6 +29,14 @@ public class FailoverConnectionTest {
 
 
     public static final String SERVER = "Server-Port";
+
+    @BeforeClass
+    public static void init() {
+        // setlower timout for tests to pass in decent time
+        // with 5 seconds timeout test finishes in approx. 25 seconds.
+        System.setProperty("remote.naming.default.timeout.seconds", "5");
+    }
+
 
     public static Endpoint createServer(int port) throws Exception {
         Context localContext = new MockContext();

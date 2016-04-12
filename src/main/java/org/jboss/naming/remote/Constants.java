@@ -28,4 +28,6 @@ public class Constants {
     public static final String CHANNEL_NAME = "naming";
 
     public static final byte[] NAMING = "naming".getBytes();
+
+    public static final long DEFAULT_TIMEOUT_SECONDS = Long.getLong("remote.naming.default.timeout.seconds", 45L);
 }

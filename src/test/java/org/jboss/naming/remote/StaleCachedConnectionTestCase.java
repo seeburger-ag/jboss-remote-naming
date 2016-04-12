@@ -30,6 +30,7 @@ import org.jboss.remoting3.remote.RemoteConnectionProviderFactory;
 import org.jboss.remoting3.spi.NetworkServerProvider;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.xnio.OptionMap;
 import org.xnio.Xnio;
@@ -62,6 +63,12 @@ public class StaleCachedConnectionTestCase {
     private AcceptingChannel server;
     private RemoteNamingService remoteNamingService;
     private boolean serverStopped;
+
+    @BeforeClass
+    public static void init() {
+        // setlower timout for tests to pass in decent time
+        System.setProperty("remote.naming.default.timeout.seconds", "5");
+    }
 
     @Before
     public void beforeTest() throws Exception {

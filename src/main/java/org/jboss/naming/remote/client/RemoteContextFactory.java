@@ -27,6 +27,7 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import org.jboss.logging.Logger;
+import org.jboss.naming.remote.Constants;
 import org.jboss.naming.remote.client.ejb.EJBClientHandler;
 import org.jboss.naming.remote.protocol.Versions;
 import org.jboss.remoting3.Channel;
@@ -54,7 +55,7 @@ class RemoteContextFactory {
 
     static RemoteNamingStore createVersionedStore(final Channel channel, final EJBClientHandler ejbClientHandler) throws IOException {
         IoFuture<byte[]> futureHeader = ClientVersionReceiver.getVersions(channel);
-        IoFuture.Status result = futureHeader.await(5, TimeUnit.SECONDS);
+        IoFuture.Status result = futureHeader.await(Constants.DEFAULT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
         switch (result) {
             case DONE:
                 break;

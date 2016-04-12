@@ -45,6 +45,7 @@ import javax.security.sasl.RealmCallback;
 import javax.xml.bind.DatatypeConverter;
 
 import org.jboss.logging.Logger;
+import org.jboss.naming.remote.Constants;
 import org.jboss.naming.remote.client.ejb.EJBClientHandler;
 import org.jboss.naming.remote.protocol.IoFutureHelper;
 import org.jboss.remoting3.Channel;
@@ -72,7 +73,7 @@ public class InitialContextFactory implements javax.naming.spi.InitialContextFac
 
     private static final String CLIENT_PROPS_FILE_NAME = "jboss-naming-client.properties";
 
-    private static final long DEFAULT_CONNECTION_TIMEOUT_IN_MILLIS = 5000;
+    private static final long DEFAULT_CONNECTION_TIMEOUT_IN_MILLIS = Constants.DEFAULT_TIMEOUT_SECONDS * 1000;
     private static final String CLIENT_PROP_KEY_ENDPOINT_NAME = "jboss.naming.client.endpoint.name";
 
     private static final String CLIENT_PROP_KEY_CONNECT_TIMEOUT = "jboss.naming.client.connect.timeout";
@@ -143,7 +144,7 @@ public class InitialContextFactory implements javax.naming.spi.InitialContextFac
             } else {
                 ejbClientHandler = null;
             }
-            final RemoteNamingStore namingStore = getOrCreateNamingStore((Hashtable<String, Object>) env, findAndCreateClientProperties(env), OptionMap.EMPTY, 5000, closeTasks, ejbClientHandler);
+            final RemoteNamingStore namingStore = getOrCreateNamingStore((Hashtable<String, Object>) env, findAndCreateClientProperties(env), OptionMap.EMPTY, DEFAULT_CONNECTION_TIMEOUT_IN_MILLIS, closeTasks, ejbClientHandler);
             return new RemoteContext(namingStore, (Hashtable<String, Object>) env, closeTasks);
 
         } catch (NamingException e) {
