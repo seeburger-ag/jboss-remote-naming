@@ -31,14 +31,23 @@
         <version>7</version>
     </parent>
 
-    <groupId>org.jboss</groupId>
+    <groupId>com.seeburger.fork</groupId>
     <artifactId>jboss-remote-naming</artifactId>
-    <version>1.0.13.Final-SNAPSHOT</version>
+    <version>1.0.13.SEE-SNAPSHOT</version>
+
+    <scm>
+        <connection>scm:git:${jboss.as.scm.connection}</connection>
+        <developerConnection>scm:git:${jboss.as.scm.connection}</developerConnection>
+        <url>${jboss.as.scm.url}</url>
+    </scm>
 
     <name>JBoss Remote Naming</name>
     <description>Library for remote naming (JNDI) with JBoss AS</description>
 
     <properties>
+        <jboss.as.scm.url>https://github.com/seeburger-ag/jboss-remote-naming</jboss.as.scm.url>
+        <jboss.as.scm.connection>git@github.com:seeburger-ag/jboss-remote-naming.git</jboss.as.scm.connection>
+
         <version.org.jboss.logging.jboss-logging>3.1.0.GA</version.org.jboss.logging.jboss-logging>
         <version.org.jboss.logging.jboss-logging-processor>1.0.0.Final</version.org.jboss.logging.jboss-logging-processor>
         <version.org.jboss.ejb-client>1.0.13.Final</version.org.jboss.ejb-client>
