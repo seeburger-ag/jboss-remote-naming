@@ -33,7 +33,7 @@
 
     <groupId>com.seeburger.fork</groupId>
     <artifactId>jboss-remote-naming</artifactId>
-    <version>1.0.13.SEE1</version>
+    <version>1.0.13.SEE2-SNAPSHOT</version>
 
     <scm>
         <connection>scm:git:${jboss.as.scm.connection}</connection>
